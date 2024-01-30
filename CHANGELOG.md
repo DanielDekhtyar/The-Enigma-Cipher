@@ -9,7 +9,27 @@
 > _Date format DD-MM-YYYY_
 
 
-### 🗓️ _Version 0.1.0 - 27-01-2024 (latest commit)_
+### 🗓️ _Version 0.2.0 - 30-01-2024 (latest commit)_
+
+---
+
+### 🔥 Enhancements
+- `rotor()` in `enigma_parts.py` was renamed to `pass_through_rotor()`
+- `pass_through_rotor()` was completely rewritten to make it work better and fix bugs raised in v0.1.0
+- `get_wiring()` in `Rotor` class was renamed to `set_wiring()` to better represent it's propose.
+- `get_notch()` in `Rotor` class was renamed to `set_notch()` to better represent it's propose.
+- `rotor_turn()` was implemented inside the `Rotor` class as `@classmethod`.  
+It turns the rotors by one position whenever needed.
+- `create_the_plugboard()` moved from `ciphering_algorithm.py` to `enigma_parts.py` for better code structure.
+- All the to-dos from version 0.1.0 were fixed and now work as expected.
+
+#### 🐞 To-Do 
+- When a rotor is set to its notch position, it will turn the other rotors more than one time.  
+It should turn a rotor just once every full turn.
+The problem may be in `get_new_rotor_position()` inside the `Rotor` class.
+
+
+### 🗓️ _Version 0.1.0 - 27-01-2024 (commit 461645d)_
 
 ---
 
@@ -26,7 +46,7 @@ The enciphered letter returned from the `enigma_machine()` is added to `result_t
 #### 🐞 To-Do 
 - When giving input `HELLO`, I get this error "Letter 11 not found in rotor wiring."  
 Probably, it is caused by the reversed rotor function.
-- The enciphering process should be check for correctness.
+- The enciphering process should be checked for correctness.
 - The code crashes when given a long input :  
 ```
 Traceback (most recent call last):
