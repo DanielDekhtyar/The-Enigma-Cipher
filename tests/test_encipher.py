@@ -13,11 +13,11 @@ from classes.rotor import Rotor
 
 
 def test_encipher():
-    word = "Enigma".upper() # The word don't have to be all uppercase
-    
+    word = "Enigma".upper()  # The word don't have to be all uppercase
+
     # Create an instance of the Enigma machine that I want to test on
     encrypting_enigma = Enigma_machine()
-    
+
     # Save all the part of the Enigma as variables
     # Reflector excluded because it is set and can not be changed by the user
     rotor_1 = encrypting_enigma.rotor_1
@@ -26,12 +26,12 @@ def test_encipher():
     rotor_4 = encrypting_enigma.rotor_4
     rotor_5 = encrypting_enigma.rotor_5
     plugboard = encrypting_enigma.plugboard
-    
+
     encrypted_word = encipher(word, rotor_3, rotor_2, rotor_1, plugboard)
-    
+
     # A second enigma machine is created with the same exact settings as the first
     decrypting_enigma = Enigma_machine()
-    
+
     # Save all the part of the Enigma as variables
     # Reflector excluded because it is set and can not be changed by the user
     decrypted_rotor_1 = decrypting_enigma.rotor_1
@@ -40,13 +40,19 @@ def test_encipher():
     decrypted_rotor_4 = decrypting_enigma.rotor_4
     decrypted_rotor_5 = decrypting_enigma.rotor_5
     decrypted_plugboard = decrypting_enigma.plugboard
-    
-    decrypted_word = encipher(encrypted_word, decrypted_rotor_3, decrypted_rotor_2, decrypted_rotor_1, decrypted_plugboard)
-    
+
+    decrypted_word = encipher(
+        encrypted_word,
+        decrypted_rotor_3,
+        decrypted_rotor_2,
+        decrypted_rotor_1,
+        decrypted_plugboard,
+    )
+
     assert word == decrypted_word
 
 
-class Enigma_machine():
+class Enigma_machine:
     def __init__(self):
         self._plugboard = self.set_plugboard()
         self._rotor_1 = Rotor(3, 12, 1)
@@ -93,4 +99,3 @@ class Enigma_machine():
     @property
     def rotor_5(self):
         return self._rotor_5
-

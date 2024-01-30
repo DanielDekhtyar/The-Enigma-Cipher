@@ -2,7 +2,6 @@
 This files contains all the code that ciphers the text according to the Enigma cipher
 """
 
-
 from classes.rotor import Rotor
 from src import enigma_parts
 
@@ -28,7 +27,9 @@ def encipher(
         str: The encrypted text.
     """
     # Create the plugboard 2D array
-    plugboard, reversed_plugboard = enigma_parts.create_the_plugboard(plugboard_settings)
+    plugboard, reversed_plugboard = enigma_parts.create_the_plugboard(
+        plugboard_settings
+    )
 
     # Stores the text after it went through the Enigma machine
     result_text = ""
@@ -38,13 +39,9 @@ def encipher(
         if char.isalpha():
             # Convert the character to its number value. A = 0, B = 1, etc.
             letter_int = ord(char) - ord("A")
-            print(f"Letter {char} is converted to {letter_int}")
             # Call the Enigma machine to encrypt the character
             enciphered_letter = enigma_machine(
                 letter_int, rotor_1, rotor_2, rotor_3, plugboard, reversed_plugboard
-            )
-            print(
-                f"Rotor positions are: Rotor 1: {rotor_1.position}, Rotor 2: {rotor_2.position}, Rotor 3: {rotor_3.position}"
             )
 
             # Convert the number value back to a character and append to the result string
@@ -99,14 +96,41 @@ def enigma_machine(
     # Create the reflector.
     # Based on the standard wiring UKW-B reflector in the Enigma I machine
     # Look : https://www.cryptomuseum.com/crypto/enigma/i
-    reflector = [24, 17, 20, 7, 16, 18, 11, 3, 15, 23, 13, 6, 14, 10, 12, 8, 4, 1, 5, 25, 2, 22, 21, 9, 0, 19]
+    reflector = [
+        24,
+        17,
+        20,
+        7,
+        16,
+        18,
+        11,
+        3,
+        15,
+        23,
+        13,
+        6,
+        14,
+        10,
+        12,
+        8,
+        4,
+        1,
+        5,
+        25,
+        2,
+        22,
+        21,
+        9,
+        0,
+        19,
+    ]
 
     # Pass the letter through the plugboard
     letter = enigma_parts.plugboard(letter, plugboard, reversed_plugboard)
 
     # Turn the rotors as needed
     Rotor.rotor_turn(rotors)
-    
+
     # False on the first pass. Becomes true after passing the reflector and going in reverse
     is_reversed: bool = False
 
@@ -121,7 +145,7 @@ def enigma_machine(
 
     # Pass the letter through the reflector
     letter = reflector[letter]
-    
+
     # Changes to True because now the letter goes in reverse through the rotors
     # See : enigma_parts.py, rotors()
     is_reversed = True

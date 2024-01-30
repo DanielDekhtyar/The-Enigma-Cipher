@@ -2,7 +2,6 @@
 The main code that runs when trying to encipher using the enigma machine.
 """
 
-
 from src import ciphering_algorithm
 from classes.rotor import Rotor
 
@@ -18,20 +17,20 @@ def main():
     """
 
     input_text = input("Enter the text to be encrypted: ")
-    input_text = input_text.replace("\n","")
+    input_text = input_text.replace("\n", "")
     input_text = input_text.upper().strip()
 
     rotor_1_number = 3
-    rotor_1_setting = 12
-    rotor_1_position = 1
+    rotor_1_setting = 18
+    rotor_1_position = 24
 
-    rotor_2_number = 2
-    rotor_2_setting = 4
-    rotor_2_position = 7
+    rotor_2_number = 4
+    rotor_2_setting = 22
+    rotor_2_position = 19
 
-    rotor_3_number = 1
-    rotor_3_setting = 1
-    rotor_3_position = 5
+    rotor_3_number = 2
+    rotor_3_setting = 25
+    rotor_3_position = 17
 
     plugboard: [int, int] = [
         [6, 10],
@@ -54,7 +53,9 @@ def main():
         input_text, rotor_1, rotor_2, rotor_3, plugboard
     )
 
+    print("===============================================")
     print(result_text)
+    print("===============================================")
 
 
 if __name__ == "__main__":
