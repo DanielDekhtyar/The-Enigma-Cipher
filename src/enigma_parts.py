@@ -1,11 +1,11 @@
 """
-Here goes all the parts of the Enigma machine enciphering algorithm
+Here is all the parts of the Enigma machine enciphering algorithm
 """
 
 from classes.rotor import Rotor
 
 
-def plugboard(letter: int, plugboard, reversed_plugboard):
+def plugboard(letter: int, plugboard, reversed_plugboard) -> chr:
     """
     This function maps a given letter through the plugboard of an Enigma machine.
 
@@ -25,7 +25,7 @@ def plugboard(letter: int, plugboard, reversed_plugboard):
     mapped letter from the reversed_plugboard dictionary.
     If the given letter is not present in either configuration, the function returns the original letter unchanged.
     """
-    
+
     if letter in plugboard:
         return plugboard[letter]
     elif letter in reversed_plugboard:
@@ -34,81 +34,76 @@ def plugboard(letter: int, plugboard, reversed_plugboard):
         return letter
 
 
-def rotor(letter: int, rotor: Rotor):
+def pass_through_rotor(letter: int, rotor: Rotor, is_reversed: bool) -> chr:
     """
-    The function `rotor` performs the encryption process using a rotor in the Enigma machine.
+    Passes a letter through a rotor, considering the rotor's wiring, offset, and position.
 
     Args:
-    letter (int): The letter parameter is an integer representing the position of the letter in the alphabet.
-    For example, 'A' would be represented by 0, 'B' by 1, and so on.
-    rotor (Rotor): The `rotor` parameter is an instance of the `Rotor` class.
+    - letter (int): The index of the input letter (0-25).
+    - rotor (Rotor): The rotor through which the letter is passed.
+    - is_reversed (bool): A boolean indicating whether the letter is passing through in reverse.
 
     Returns:
-    The encrypted letter, which is the original letter adjusted based on the rotor's absolute position,
-    changed according to the rotor wiring, and shifted by the rotor setting.
+    - chr: The resulting letter after passing through the rotor.
 
     Note:
-    If the letter is not found in the rotor wiring, the function will print an error message and
-    return the original letter as a placeholder.
+    - The function takes an input letter index (0-25), a rotor object, and a boolean flag to determine
+    whether the letter is passing through the rotor in the forward direction or reversed.
+    - The rotor's wiring, setting, and position are considered in the process.
     """
-    # Adjust the letter based on the rotor's absolute position (The rotors turn)
-    letter = (letter + rotor.position) % 26
-    
-    # Change the letter according to the rotor wiring
-    letter = rotor.wiring[letter]
-    
-    # Shift the letter by the rotor setting
-    letter = rotor_setting_shift(letter, rotor)
-    
-    return letter
+    rotor_wiring = rotor.wiring
+    rotor_offset = rotor.setting
+    rotor_position = rotor.position
 
+    # Apply rotor position and setting
+    letter_index = (letter + rotor_position - rotor_offset) % 26
 
-def rotor_reversed(letter: int, rotor: Rotor):
-    """
-    The function `rotor_reversed` reverses the encryption process performed by a rotor in the Enigma machine.
-
-    Args:
-    letter (int): The letter parameter is an integer representing the position of the letter in the alphabet.
-    For example, 'A' would be represented by 0, 'B' by 1, and so on.
-    rotor (Rotor): The `rotor` parameter is an instance of the `Rotor` class.
-
-    Returns:
-    The decrypted letter, which is the original letter reversed through the rotor wiring and shifted back by the rotor setting.
-
-    Note:
-    If the letter is not found in the rotor wiring, the function will print an error message and return the original letter as a placeholder.
-    """
-    # Check if the letter is in the rotor wiring
-    if letter in rotor.wiring:
-        # Reverse the letter through the rotor wiring
-        letter = rotor.wiring.index(letter)
-
-        # Reverse the letter by shifting it back by the rotor setting
-        letter = (letter - rotor.setting) % 26
-
-        return letter
+    if is_reversed:
+        # If passing in reverse, find the original letter in the wiring
+        result_index = rotor_wiring.index(letter_index)
     else:
-        # Handle the case where the letter is not in the rotor wiring
-        print(f"Letter {letter} not found in rotor wiring.")
-        # You might want to decide on the appropriate action, e.g., return an error code or raise an exception.
-        # For now, returning the original letter as a placeholder.
-        return letter
+        # Pass through rotor wiring
+        result_index = rotor_wiring[letter_index]
+
+    # Reverse rotor position and setting adjustment
+    result_index = (result_index - rotor_position + rotor_offset) % 26
+
+    return result_index
 
 
-def rotor_setting_shift(letter: int, rotor: Rotor):
+def rotor_setting_shift(letter: int, rotor: Rotor) -> chr:
     """
     The function shifts a letter by the rotor setting, taking into account wrapping around.
-    
+
     Args:
     letter (int): The letter parameter is an integer representing the position of the letter in the
     alphabet. For example, 'A' would be represented by 0, 'B' by 1, and so on.
     rotor (Rotor): The `rotor` parameter is an instance of the `Rotor` class.
-    
+
     Returns:
     The encrypted letter, which is the original letter shifted by the rotor setting.
     """
     # Shift the letter by the rotor setting, and handle wrapping around
     # Rotor setting (also called Ring setting) is zero-indexed, 0 = No change, 1 = +1, 2 = +2, etc.
     encrypted_letter = (letter + rotor.setting) % 26
-    
+
     return encrypted_letter
+
+
+def create_the_plugboard(plugboard_settings: list[int, int]) -> tuple[dict, dict]:
+    """
+    Create the plugboard dictionary and its reverse dictionary.
+
+    Args:
+        plugboard_settings (list[int, int]): The list of plugboard settings.
+
+    Returns:
+        tuple: A tuple containing the plugboard dictionary and its reverse dictionary.
+    """
+    # Create the plugboard dictionary from the list of plugboard settings.
+    plugboard = dict(plugboard_settings)
+
+    # Reverse the dictionary using a dictionary comprehension
+    reversed_plugboard = {value: key for key, value in plugboard.items()}
+
+    return plugboard, reversed_plugboard
