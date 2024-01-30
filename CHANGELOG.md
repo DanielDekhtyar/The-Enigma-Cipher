@@ -2,14 +2,24 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 0.1.0
+> ### Last Version : 0.2.1
 >
-> ### Last Update : 27-01-2024
+> ### Last Update : 30-01-2024
 >
 > _Date format DD-MM-YYYY_
 
 
-### 🗓️ _Version 0.2.0 - 30-01-2024 (latest commit)_
+### 🗓️ _Version 0.2.1 - 30-01-2024 (latest commit)_
+
+---
+
+#### 🛠️ Fixed
+- The bug mentioned in the commit of v0.2.0, when the rotors don't turn the way they should, was fixed.  
+It was fixed by adding a boolean that tracks if the first rotor is currently at it's notch position.  
+If it is not at the notch position then no move will accrue.
+
+
+### 🗓️ _Version 0.2.0 - 30-01-2024 ([commit 7c43db5](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/7c43db5))_
 
 ---
 
@@ -29,7 +39,7 @@ It should turn a rotor just once every full turn.
 The problem may be in `get_new_rotor_position()` inside the `Rotor` class.
 
 
-### 🗓️ _Version 0.1.0 - 27-01-2024 (commit 461645d)_
+### 🗓️ _Version 0.1.0 - 27-01-2024 ([commit 461645d](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/461645d))_
 
 ---
 
