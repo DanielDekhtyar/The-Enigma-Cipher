@@ -34,7 +34,7 @@ def main():
 
     # Initialize the plugboard
     plugboard: [int, int] = []
-    
+
     # Populate the plugboard with pairs of letters to be swapped
     plugboard = [
         [6, 10],
