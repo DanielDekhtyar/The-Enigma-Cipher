@@ -21,18 +21,22 @@ def main():
     input_text = input_text.upper().strip()
 
     rotor_1_number = 3
-    rotor_1_setting = 18
-    rotor_1_position = 24
+    rotor_1_setting = 1
+    rotor_1_position = 1
 
-    rotor_2_number = 4
-    rotor_2_setting = 22
-    rotor_2_position = 19
+    rotor_2_number = 2
+    rotor_2_setting = 1
+    rotor_2_position = 1
 
-    rotor_3_number = 2
-    rotor_3_setting = 25
-    rotor_3_position = 17
+    rotor_3_number = 1
+    rotor_3_setting = 1
+    rotor_3_position = 1
 
-    plugboard: [int, int] = [
+    # Initialize the plugboard
+    plugboard: [int, int] = []
+    
+    # Populate the plugboard with pairs of letters to be swapped
+    plugboard = [
         [6, 10],
         [3, 11],
         [8, 24],
