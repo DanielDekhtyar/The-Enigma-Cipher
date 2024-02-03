@@ -8,37 +8,35 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Text, Button, PhotoImage, ttk
 from utils.resource_path import resource_path
+from src import gui_event_handlers
 
 
 OUTPUT_PATH = Path(__file__).parent
-path_to_assets_folder = OUTPUT_PATH / Path(
-    resource_path(r"C:\Programming\VS Code\The-Enigma-Cipher\assets")
-)
+path_to_assets_folder = OUTPUT_PATH / Path(resource_path(r"The-Enigma-Cipher\assets"))
 ASSETS_PATH = f"{path_to_assets_folder}/frame0"
 
 
+"""Return the absolute path to a file or directory relative to the assets folder."""
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
 window = Tk()
 
-window.geometry("1245x783")
+window.geometry("1255x790")
 window.configure(bg="#FFFFFF")
 window.title("The Enigma Cipher")
 
-# Load your icon image (replace 'icon.png' with the actual path to your icon file)
-icon_image = PhotoImage(file=f"{path_to_assets_folder}/Enigma-logo.png")
-
 # Set the icon of the window
-window.iconphoto(True, icon_image)
+window.iconbitmap(f"{path_to_assets_folder}/icon.ico")
+
 
 # Create the main window of the application
 canvas = Canvas(
     window,
     bg="#FFFFFF",
-    height=783,
-    width=1245,
+    height=790,
+    width=1255,
     bd=0,
     highlightthickness=0,
     relief="ridge",
@@ -46,8 +44,8 @@ canvas = Canvas(
 
 canvas.place(x=0, y=0)
 
-"""Add texts on the screen"""
 
+"""Add texts on the screen"""
 canvas.create_text(
     34.0,
     40.0,
@@ -67,7 +65,7 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    1000.0,
+    1020.0,
     20.0,
     anchor="nw",
     text="Enigma settings",
@@ -138,13 +136,13 @@ canvas.create_text(
     font=("InriaSans Regular", 15 * -1),
 )
 
-"""Add Enigma logo"""
 
-enigma_logo_img = PhotoImage(file=relative_to_assets("image_2.png"))
+"""Add Enigma logo"""
+enigma_logo_img = PhotoImage(file=relative_to_assets("Enigma logo.png"))
 enigma_logo = canvas.create_image(720.0, 64.0, image=enigma_logo_img)
 
-"""Add the input and output boxes"""
 
+"""Add the input and output boxes"""
 # Input
 input_text_img = PhotoImage(file=relative_to_assets("I-O text box.png"))
 input_text_bg = canvas.create_image(484.5, 278.5, image=input_text_img)
@@ -157,15 +155,30 @@ output_text_bg = canvas.create_image(484.5, 629.5, image=output_text_img)
 output_text = Text(bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0)
 output_text.place(x=49.0, y=510.0, width=871.0, height=245.0)
 
-"""Add buttons"""
 
+"""Add buttons"""
 # Encipher text
 encipher_text_img = PhotoImage(file=relative_to_assets("encipher_text_button.png"))
 encipher_text_button = Button(
     image=encipher_text_img,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Encipher text button clicked"),
+    command=lambda: gui_event_handlers.encipher_text(
+        input_text.get("1.0", "end-1c"),
+        gui_event_handlers.get_plugboard_2D_array(plugboard_inputs),
+        gui_event_handlers.get_rotor_settings(
+            rotor_left_number,
+            rotor_left_position,
+            rotor_left_shift,
+            rotor_center_number,
+            rotor_center_position,
+            rotor_center_shift,
+            rotor_right_number,
+            rotor_right_position,
+            rotor_right_shift,
+        ),
+        output_text,
+    ),
     relief="flat",
 )
 encipher_text_button.place(
@@ -178,7 +191,7 @@ copy_button = Button(
     image=copy_img,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Copy button clicked"),
+    command=lambda: gui_event_handlers.copy_text(output_text),
     relief="flat",
 )
 copy_button.place(x=214.0, y=449.0, width=104.13290405273438, height=39.86198043823242)
@@ -189,7 +202,7 @@ paste_button = Button(
     image=paste_img,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Paste button clicked"),
+    command=lambda: gui_event_handlers.paste_text(input_text),
     relief="flat",
 )
 paste_button.place(x=214.0, y=101.0, width=104.13290405273438, height=39.86198043823242)
@@ -204,9 +217,11 @@ canvas.create_text(
     font=("InriaSans Regular", 15 * -1),
 )
 
-"""Add arrows"""
+
+"""Add arrows in plugboard"""
 arrows_img = PhotoImage(file=relative_to_assets("arrows.png"))
 arrows = canvas.create_image(1125.833740234375, 524.8312683105469, image=arrows_img)
+
 
 """Add rotors"""
 # Rotor number selection
@@ -402,6 +417,37 @@ pb_25.set(" ")
 pb_26 = ttk.Combobox(window, values=plugboard_letters)
 pb_26.place(x=1155, y=745, width=35, height=20)
 pb_26.set(" ")
+
+
+# An array of all the plugboard comboboxes
+plugboard_inputs: list[ttk.Combobox] = [
+    pb_1,
+    pb_2,
+    pb_3,
+    pb_4,
+    pb_5,
+    pb_6,
+    pb_7,
+    pb_8,
+    pb_9,
+    pb_10,
+    pb_11,
+    pb_12,
+    pb_13,
+    pb_14,
+    pb_15,
+    pb_16,
+    pb_17,
+    pb_18,
+    pb_19,
+    pb_20,
+    pb_21,
+    pb_22,
+    pb_23,
+    pb_24,
+    pb_25,
+    pb_26,
+]
 
 window.resizable(False, False)
 window.mainloop()
