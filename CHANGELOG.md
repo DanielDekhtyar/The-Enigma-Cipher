@@ -2,11 +2,21 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 0.9.0
+> ### Last Version : 0.9.1
 >
-> ### Last Update : 03-02-2024
+> ### Last Update : 04-02-2024
 >
 > _Date format DD-MM-YYYY_
+
+
+### 🗓️ _Version 0.9.1 - 034-02-2024 ([commit 2116c10](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/2116c10))_
+
+---
+
+### 🔥 Enhancements
+- The enciphering algorithm is now fully working as the real Enigma 1 machine with the correct enciphering algorithm.
+- In the previous version, the notch wasn't in the right place. Now it is in the so-called turnover position. Here is a [link](https://www.cryptomuseum.com/crypto/enigma/i/index.htm) to the Crypto Museum website explaining it.
+
 
 
 ### 🗓️ _Version 0.9.0 - 03-02-2024 ([commit 4aba150](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/4aba150))_
