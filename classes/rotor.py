@@ -47,8 +47,11 @@ class Rotor:
         # Rotor position (the letter that the rotor is currently at 0-25)
         self._position = position
 
+    def __repr__(self) -> str:
+        return f"Rotor number {self.number}, Setting {self.setting}, Position {self.position}"
+
     @classmethod
-    def rotor_turn(self, rotors: list) -> None:
+    def rotor_turn(cls, rotors: list) -> None:
         """
         Rotates the rotors in the provided list based on certain conditions.
 
@@ -85,8 +88,12 @@ class Rotor:
         get_new_rotor_position(rotors, rotor_number)
 
         """
-        Tracks if the first rotor has reached it's notch position (rotor_1.notch). This is used to determine if the second and third rotors can move or not.
-        It addresses a bug when while the second rotor stays at the notch position, the third rotor will move every time the function is called.
+        Tracks if the first rotor has reached it's notch position (rotor_1.notch).
+        
+        This is used to determine if the second and third rotors can move or not.
+        It addresses a bug when while the second rotor stays at the notch position,
+        the third rotor will move every time the function is called.
+        
         The third rotor should only move when the second rotor has moved a full circle.
         """
         if rotors[0].position == rotors[0].notch:
@@ -155,7 +162,7 @@ class Rotor:
             ]
 
         # Set wiring for rotor II
-        elif rotor_number == 2:
+        if rotor_number == 2:
             return [
                 0,
                 9,
@@ -186,7 +193,7 @@ class Rotor:
             ]
 
         # Set wiring for rotor III
-        elif rotor_number == 3:
+        if rotor_number == 3:
             return [
                 1,
                 3,
@@ -217,7 +224,7 @@ class Rotor:
             ]
 
         # Set wiring for rotor IV
-        elif rotor_number == 4:
+        if rotor_number == 4:
             return [
                 4,
                 18,
@@ -248,7 +255,7 @@ class Rotor:
             ]
 
         # Set wiring for rotor V
-        elif rotor_number == 5:
+        if rotor_number == 5:
             return [
                 21,
                 25,
@@ -285,7 +292,7 @@ class Rotor:
             )
             sys.exit(1)
 
-    def set_notch(self, rotor_number):
+    def set_notch(self, rotor_number: int) -> int:
         """
         Returns the notch position for the specified rotor number.
 
@@ -301,19 +308,19 @@ class Rotor:
             return 24
 
         # Rotor notch for rotor II
-        elif rotor_number == 2:
+        if rotor_number == 2:
             return 12
 
         # Rotor notch for rotor III
-        elif rotor_number == 3:
+        if rotor_number == 3:
             return 3
 
         # Rotor notch for rotor IV
-        elif rotor_number == 4:
+        if rotor_number == 4:
             return 17
 
         # Rotor notch for rotor V
-        elif rotor_number == 5:
+        if rotor_number == 5:
             return 7
 
     @property
