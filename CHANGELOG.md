@@ -2,20 +2,47 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 0.2.1
+> ### Last Version : 0.9.0
 >
-> ### Last Update : 30-01-2024
+> ### Last Update : 03-02-2024
 >
 > _Date format DD-MM-YYYY_
 
 
-### 🗓️ _Version 0.2.1 - 30-01-2024 (latest commit)_
+### 🗓️ _Version 0.9.0 - 03-02-2024 ([commit 4aba150](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/4aba150))_
+
+---
+
+#### 🚀 Added
+- GUI functionality implemented.
+- All the event handlers implemented inside `gui_event_handlers.py`
+- Here is how the enciphering algorithm works in `encipher_text()`:
+    - `encipher_text()` in `gui_event_handlers.py` takes the input text and the enigma settings.
+    - Then it passes it to the enciphering algorithm (See: `encipher()` in `ciphering_algorithm.py`).
+    - Gets back the enciphered text and displays it in the output box.
+- A description of every function in `gui_event_handlers.py`
+    - `display_enciphered_text` displays the enciphered text to the output box.
+    - `initialize_rotors()` takes the rotors settings given by the user and initializes 3 rotors (`Rotor` class) with the given parameters.
+    - `copy_text()` copies the text from the output box to the Windows clipboard.
+    - `paste_text()` pastes whatever is currently in the clipboard, to the input box.
+    - `get_rotor_settings()` is one of the functions called from `GUI.py` whenever the `Encipher Text` button is clicked.  
+    It takes the Comboboxes values and creates a 2D array where all the settings for all the rotors are together under one variable `rotor_settings`.
+    - `rotor_number_roman_to_int()` is called by `get_rotor_settings()` to convert roman numbers to integers. I => 1, II => 2 etc.
+    - `get_plugboard_2D_array()` takes an array with all the combo boxes representing the plugboard connections and returns a 2D array of the plugboard pairs.  
+    The inner array is the pairs themselves. This is a pair of letters that will be swapped: `[X][0] <=> [X][1]`
+
+
+### 🔥 Enhancements
+- `plugboard()` in `enigma_parts.py` was renamed to `pass_through_plugboard()` to better reflect its purpose.
+
+
+### 🗓️ _Version 0.2.1 - 30-01-2024 ([commit fc2fc3e](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/fc2fc3e))_
 
 ---
 
 #### 🛠️ Fixed
 - The bug mentioned in the commit of v0.2.0, when the rotors don't turn the way they should, was fixed.  
-It was fixed by adding a boolean that tracks if the first rotor is currently at it's notch position.  
+It was fixed by adding a boolean that tracks if the first rotor is currently at its notch position.  
 If it is not at the notch position then no move will accrue.
 
 
