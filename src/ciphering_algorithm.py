@@ -39,6 +39,7 @@ def encipher(
         if char.isalpha():
             # Convert the character to its number value. A = 0, B = 1, etc.
             letter_int = ord(char) - ord("A")
+
             # Call the Enigma machine to encrypt the character
             enciphered_letter = enigma_machine(
                 letter_int, rotor_1, rotor_2, rotor_3, plugboard, reversed_plugboard
@@ -70,16 +71,17 @@ def enigma_machine(
     - rotor_1 (Rotor): The first rotor to be used in the encryption or decryption process.
     - rotor_2 (Rotor): The second rotor to be used in the encryption or decryption process.
     - rotor_3 (Rotor): The third rotor to be used in the encryption or decryption process.
-    - plugboard (list[int, int]): A list representing the plugboard configuration, where each element is a
-    pair of integers representing the input and output letters.
+    - plugboard (list[int, int]): A list representing the plugboard configuration,
+    where each element is a pair of integers representing the input and output letters.
     - reversed_plugboard (list[int, int]): A list representing the reverse plugboard configuration,
     where each element is a pair of integers representing the output and input letters.
 
     Returns:
     - int: The encrypted or decrypted letter, represented as an integer from 0 to 25.
 
-    The function performs the encryption or decryption process using the Enigma machine. It takes a letter and passes
-    it through the plugboard, the rotors, the reflector, and then back through the rotors and the plugboard again.
+    The function performs the encryption or decryption process using the Enigma machine.
+    It takes a letter and passes it through the plugboard, the rotors, the reflector,
+    and then back through the rotors and the plugboard again.
     The resulting letter is returned.
 
     Note:
@@ -125,13 +127,16 @@ def enigma_machine(
         19,
     ]
 
-    # Pass the letter through the plugboard
-    letter = enigma_parts.plugboard(letter, plugboard, reversed_plugboard)
 
-    # Turn the rotors as needed
+    """All the steps that a letter goes through in the Enigma machine"""
+
+    # Pass the letter through the plugboard
+    letter = enigma_parts.pass_through_plugboard(letter, plugboard, reversed_plugboard)
+
+    # Turn the rotors
     Rotor.rotor_turn(rotors)
 
-    # False on the first pass. Becomes true after passing the reflector and going in reverse
+    # Initially False. Becomes true after passing the reflector and going in reverse
     is_reversed: bool = False
 
     # Pass the letter through the first rotor
@@ -147,7 +152,7 @@ def enigma_machine(
     letter = reflector[letter]
 
     # Changes to True because now the letter goes in reverse through the rotors
-    # See : enigma_parts.py, rotors()
+    # See : enigma_parts.py => rotors()
     is_reversed = True
 
     # Pass the letter through the third rotor in reverse
@@ -160,6 +165,6 @@ def enigma_machine(
     letter = enigma_parts.pass_through_rotor(letter, rotor_1, is_reversed)
 
     # Pass the letter through the plugboard again
-    letter = enigma_parts.plugboard(letter, plugboard, reversed_plugboard)
+    letter = enigma_parts.pass_through_plugboard(letter, plugboard, reversed_plugboard)
 
     return letter
