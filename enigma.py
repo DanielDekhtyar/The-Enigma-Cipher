@@ -33,10 +33,10 @@ def main():
     rotor_3_position = 1
 
     # Initialize the plugboard
-    plugboard: [int, int] = []
+    plugboard_settings: [int, int] = []
 
     # Populate the plugboard with pairs of letters to be swapped
-    plugboard = [
+    plugboard_settings = [
         [6, 10],
         [3, 11],
         [8, 24],
@@ -54,7 +54,7 @@ def main():
     rotor_3 = Rotor(rotor_3_number, rotor_3_setting, rotor_3_position)
 
     result_text = ciphering_algorithm.encipher(
-        input_text, rotor_1, rotor_2, rotor_3, plugboard
+        input_text, rotor_1, rotor_2, rotor_3, plugboard_settings
     )
 
     print("===============================================")
