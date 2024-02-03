@@ -54,7 +54,7 @@ def main():
     rotor_3 = Rotor(rotor_3_number, rotor_3_shift, rotor_3_position)
 
     result_text = ciphering_algorithm.encipher(
-        input_text, rotor_3, rotor_2, rotor_1, plugboard_settings
+        input_text, rotor_1, rotor_2, rotor_3, plugboard_settings
     )
 
     print("===============================================")
