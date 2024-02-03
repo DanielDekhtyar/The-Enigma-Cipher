@@ -2,6 +2,7 @@
 Here are event handling functions that are called when an event happens in the GUI
 """
 
+import tkinter
 from tkinter import Text, ttk
 from classes.rotor import Rotor
 from src import ciphering_algorithm
@@ -138,7 +139,7 @@ def paste_text(text_box: Text) -> None:
     """
 
     # Check if the clipboard contains text
-    if text_box.clipboard_get():
+    try:
         # Clear the existing text in the Text widget
         text_box.delete("1.0", "end")
 
@@ -147,6 +148,9 @@ def paste_text(text_box: Text) -> None:
 
         # Insert the text into the text box
         text_box.insert("insert", text)
+    except tkinter.TclError:
+        # Error handling in case the clipboard is empty
+        print("Error: Unable to retrieve text from clipboard")
 
 
 def get_rotor_settings(
