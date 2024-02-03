@@ -96,15 +96,17 @@ class Rotor:
         
         The third rotor should only move when the second rotor has moved a full circle.
         """
+        
         if rotors[0].position == rotors[0].notch:
             first_rotor_reached_notch = True
         else:
             first_rotor_reached_notch = False
 
-        # Check if the second rotor has reached the notch. If so, move the second rotor forward by one position.
+        # Check if the first rotor has reached the notch. If so, move the second rotor forward by one position.
         if first_rotor_reached_notch:
-            rotor_number = 1
+            rotor_number = 1 # Zero-indexed
             get_new_rotor_position(rotors, rotor_number)
+
 
         # Tracks if the second rotor has reached the notch. This is used to determine if the third rotor can move or not.
         # For more info look at the docstring right above
@@ -113,10 +115,11 @@ class Rotor:
         else:
             second_rotor_reached_notch = False
 
-        # Check if the third rotor has reached the notch. If so, move the third rotor forward by one position.
+        # Check if the second rotor has reached the notch. If so, move the third rotor forward by one position.
         if first_rotor_reached_notch and second_rotor_reached_notch:
             rotor_number = 2
             get_new_rotor_position(rotors, rotor_number)
+
 
     # Wiring setting taken from https://www.cryptomuseum.com/crypto/enigma/wiring.htm for Enigma I machine
     def set_wiring(self, rotor_number):
@@ -305,23 +308,23 @@ class Rotor:
 
         # Rotor notch for rotor I
         if rotor_number == 1:
-            return 24
+            return 18
 
         # Rotor notch for rotor II
         if rotor_number == 2:
-            return 12
+            return 6
 
         # Rotor notch for rotor III
         if rotor_number == 3:
-            return 3
+            return 23
 
         # Rotor notch for rotor IV
         if rotor_number == 4:
-            return 17
+            return 11
 
         # Rotor notch for rotor V
         if rotor_number == 5:
-            return 7
+            return 0
 
     @property
     def wiring(self):
