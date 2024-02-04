@@ -2,21 +2,31 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 0.9.1
+> ### Last Version : 1.0.0
 >
-> ### Last Update : 04-02-2024
+> ### Last Update : 05-02-2024
 >
 > _Date format DD-MM-YYYY_
 
 
-### 🗓️ _Version 0.9.1 - 034-02-2024 ([commit 2116c10](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/2116c10))_
+### 🗓️ _Version 1.0.0 - 05-02-2024 ([commit 578ce1d](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/578ce1d))_
+
+---
+
+#### 🚀 Added
+- `is_valid_settings()` in `gui_event_handlers.py` checks if the rotor settings given by the user are valid or not.  
+If the input is invalid, a red error message will be displayed in the output box.  
+- `Clear` buttons added to the GUI. When clicked they clear all the text inside the respective text box.
+- Info text was added to the bottom of the GUI with relevant links.
+
+
+### 🗓️ _Version 0.9.1 - 04-02-2024 ([commit 2116c10](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/2116c10))_
 
 ---
 
 ### 🔥 Enhancements
 - The enciphering algorithm is now fully working as the real Enigma 1 machine with the correct enciphering algorithm.
 - In the previous version, the notch wasn't in the right place. Now it is in the so-called turnover position. Here is a [link](https://www.cryptomuseum.com/crypto/enigma/i/index.htm) to the Crypto Museum website explaining it.
-
 
 
 ### 🗓️ _Version 0.9.0 - 03-02-2024 ([commit 4aba150](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/4aba150))_
