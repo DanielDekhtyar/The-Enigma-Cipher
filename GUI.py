@@ -4,7 +4,6 @@ This is a file describing the GUI for the Enigma cipher app created using Tkinte
 
 from pathlib import Path
 
-# from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Text, Button, PhotoImage, ttk
 from utils.resource_path import resource_path
@@ -13,7 +12,7 @@ from src import gui_event_handlers
 
 OUTPUT_PATH = Path(__file__).parent
 path_to_assets_folder = OUTPUT_PATH / Path(resource_path(r"The-Enigma-Cipher\assets"))
-ASSETS_PATH = f"{path_to_assets_folder}/frame0"
+ASSETS_PATH = path_to_assets_folder
 
 
 """Return the absolute path to a file or directory relative to the assets folder."""
@@ -23,7 +22,7 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("1255x790")
+window.geometry("1255x830")
 window.configure(bg="#FFFFFF")
 window.title("The Enigma Cipher")
 
@@ -35,7 +34,7 @@ window.iconbitmap(f"{path_to_assets_folder}/icon.ico")
 canvas = Canvas(
     window,
     bg="#FFFFFF",
-    height=790,
+    height=830,
     width=1255,
     bd=0,
     highlightthickness=0,
@@ -207,6 +206,28 @@ paste_button = Button(
 )
 paste_button.place(x=214.0, y=101.0, width=104.13290405273438, height=39.86198043823242)
 
+# Clear input
+clear_input_img = PhotoImage(file=relative_to_assets("Clear button.png"))
+clear_input_button = Button(
+    image=clear_input_img,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: gui_event_handlers.clear_textbox(input_text),
+    relief="flat",
+)
+clear_input_button.place(x=330.0, y=101.0, width=104.13290405273438, height=39.86198043823242)
+
+# Clear output
+clear_output_img = PhotoImage(file=relative_to_assets("Clear button.png"))
+clear_output_button = Button(
+    image=clear_output_img,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: gui_event_handlers.clear_textbox(output_text),
+    relief="flat",
+)
+clear_output_button.place(x=330.0, y=449.0, width=104.13290405273438, height=39.86198043823242)
+
 # Encryption waring text
 canvas.create_text(
     35.0,
@@ -216,6 +237,56 @@ canvas.create_text(
     fill="#000000",
     font=("InriaSans Regular", 15 * -1),
 )
+
+"""Info text at the bottom of the screen"""
+canvas.create_text(
+    35.0,
+    780.0,
+    anchor="nw",
+    text="The app was created by Daniel Dekhtyar |                 |             . Most of the enciphering algorithm was written in just 5 hours on one sleepless night!",
+    fill="#000000",
+    font=("InriaSans Regular", 15 * -1),
+)
+canvas.create_text(
+    313.0,
+    780.0,
+    anchor="nw",
+    text="LinkedIn",
+    font=("InriaSans Regular", 15 * -1, "underline"),
+    tags="linkedin_link",
+    fill="blue",
+)
+canvas.create_text(
+    383.0,
+    780.0,
+    anchor="nw",
+    text="GitHub",
+    fill="blue",
+    font=("InriaSans Regular", 15 * -1, "underline"),
+    tags="github_link",
+)
+canvas.create_text(
+    35.0,
+    803.0,
+    anchor="nw",
+    text="The app simulates Enigma 1 machine with the UKW-B reflector. For more Info about the Enigma click         .",
+    fill="#000000",
+    font=("InriaSans Regular", 15 * -1),
+)
+canvas.create_text(
+    697.0,
+    803.0,
+    anchor="nw",
+    text="here",
+    fill="blue",
+    font=("InriaSans Regular", 15 * -1, "underline"),
+    tags="enigma_link",
+)
+
+# Bind the click event to the open_link function
+canvas.tag_bind("linkedin_link", "<Button-1>", gui_event_handlers.open_linkedin_link)
+canvas.tag_bind("github_link", "<Button-1>", gui_event_handlers.open_github_link)
+canvas.tag_bind("enigma_link", "<Button-1>", gui_event_handlers.open_enigma_link)
 
 
 """Add arrows in plugboard"""

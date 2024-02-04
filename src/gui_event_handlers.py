@@ -6,6 +6,7 @@ import tkinter
 from tkinter import Text, ttk
 from classes.rotor import Rotor
 from src import ciphering_algorithm
+import webbrowser
 
 
 def encipher_text(
@@ -25,24 +26,28 @@ def encipher_text(
 
     Returns:
     - None
-
-    Raises:
-    - None
-
-    Example:
-        encipher_text("HELLO", [[0, 1], [2, 3]], [[1, 0, 0], [2, 0, 0], [3, 0, 0]], output_text)
     """
-
+    
+    # If the Enigma settings are not valid then no encryption will be done and an error message will be displayed in the output box. See : is_valid_settings()
+    if not is_valid_settings(plugboard_settings, rotor_settings, output_text):
+        # If false is returned then there is an error. Otherwise the code will continue to run as usual.
+        return
+    
     # Make the input text uppercase and strip any whitespaces from the start and end of the string
     input_text = input_text.upper().strip()
 
-    rotor_1, rotor_2, rotor_3 = initialize_rotors(rotor_settings)
-
+    # Initialize the rotors (Rotor class) for the Enigma machine based on the provided rotor settings.
+    # Returns the tuple of the 3 rotors (Rotor class) for the Enigma machine.
+    rotors = initialize_rotors(rotor_settings)
+    
     # Convert letters to numbers. Zero-indexed. A is 0, B is 1, C is 2 etc.
     plugboard_settings = [
         [ord(letter) - ord("A") for letter in sublist] for sublist in plugboard_settings
     ]
 
+    # Unpack the rotors tuple
+    rotor_1, rotor_2, rotor_3 = rotors[0], rotors[1], rotors[2]
+    
     # Send the string in to the enciphering algorithm
     enciphered_text = ciphering_algorithm.encipher(
         input_text, rotor_1, rotor_2, rotor_3, plugboard_settings
@@ -58,12 +63,13 @@ def display_enciphered_text(enciphered_text: str, output_text: Text) -> None:
     Args:
     - enciphered_text (str): The enciphered text to be displayed.
     - output_text (Text): The output text widget where the enciphered text will be displayed.
-
-    Example:
-        display_enciphered_text("ENCRYPTED", output_text)
     """
-    output_text.delete("1.0", "end-1c")  # Clear existing text in the text box
-    output_text.insert("1.0", enciphered_text)  # Insert the new text into the text box
+    # Clear existing text in the text box
+    output_text.delete("1.0", "end-1c")
+    # Set the foreground color to black
+    output_text.config(foreground="black")
+    # Insert the new text into the text box
+    output_text.insert("1.0", enciphered_text)
     
 
 def initialize_rotors(rotor_settings: [int, int]) -> tuple[Rotor]:
@@ -187,9 +193,11 @@ def get_rotor_settings(
         ]
     """
     
-    # rotor_settings = [0] is the left rotor
-    # rotor_settings = [1] is the center rotor
-    # rotor_settings = [2] is the right rotor
+    """
+    rotor_settings = [0] is the left rotor
+    rotor_settings = [1] is the center rotor
+    rotor_settings = [2] is the right rotor
+    """
 
     rotor_settings = [
         [
@@ -261,3 +269,73 @@ def get_plugboard_2D_array(plugboard_inputs: list) -> list:
         [plugboard_inputs[i].get(), plugboard_inputs[i + 1].get()]
         for i in range(0, len(plugboard_inputs), 2)
     ]
+
+
+def is_valid_settings(plugboard_settings: [int, int], rotor_settings: [int, int], output_text):
+    """
+    Check if the provided plugboard and rotor settings are valid.
+
+    Args:
+    - plugboard_settings (list[int, int]): The plugboard settings as a list of pairs of integers representing the connected letters.
+    - rotor_settings (list[list[int, int, int]]): The rotor settings as a list of lists. Each inner list contains the rotor number, rotor shift, and rotor position.
+    - output_text: The output text widget where error messages will be displayed.
+
+    Returns:
+    - bool: True if the settings are valid, False otherwise.
+    """
+    
+    
+    """Check if there is no two instances of the same rotor number"""
+    if len(rotor_settings) != len({tuple(setting) for setting in rotor_settings}):
+        """If invalid, display an error message in the output box"""
+        # Delete the existing text in the output box
+        output_text.delete("1.0", "end-1c")
+        # Set the foreground color to red
+        output_text.config(foreground="red")
+        # Put new text in to the box
+        output_text.insert("1.0", "Two or more rotors are the same number.")
+        return False
+    
+    """Check if there are two or more letters that are the same if the plugboard. Each letter can be only once"""
+    # Flatten the 2D array and filter out empty cells
+    flattened = [cell for row in plugboard_settings for cell in row if cell != ' ']
+    
+    # Check for duplicates
+    if len(flattened) != len(set(flattened)):
+        """If invalid, display an error message in the output box"""
+        # Delete the existing text in the output box
+        output_text.delete("1.0", "end-1c")
+        # Set the foreground color to red
+        output_text.config(foreground="red")
+        # Put new text in to the box
+        output_text.insert("1.0", "Two or more letters in the plugboard are the same.")
+        return False
+    
+    else:
+        return True
+
+
+def clear_textbox(text_box: Text) -> None:
+    """
+    Clear the content of the given text box.
+
+    Parameters:
+    - text_box (Text): The text box to clear.
+
+    Returns:
+    - None
+    """
+
+    text_box.delete("1.0", "end")
+
+
+def open_enigma_link(event):
+    webbrowser.open_new_tab("https://www.cryptomuseum.com/crypto/enigma/i/index.htm")
+
+
+def open_linkedin_link(event):
+    webbrowser.open_new_tab("https://www.linkedin.com/in/daniel-dekhtyar/")
+
+
+def open_github_link(event):
+    webbrowser.open_new_tab("https://github.com/DanielDekhtyar")
