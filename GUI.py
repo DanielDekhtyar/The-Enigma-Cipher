@@ -27,7 +27,7 @@ window.configure(bg="#FFFFFF")
 window.title("The Enigma Cipher")
 
 # Set the icon of the window
-window.iconbitmap(f"{path_to_assets_folder}/icon.ico")
+window.iconbitmap(f"{path_to_assets_folder}/encrypt.ico")
 
 
 # Create the main window of the application
