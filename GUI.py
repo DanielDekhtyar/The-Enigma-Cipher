@@ -269,12 +269,12 @@ canvas.create_text(
     35.0,
     803.0,
     anchor="nw",
-    text="The app simulates Enigma 1 machine with the UKW-B reflector. For more Info about the Enigma click         .",
+    text="The app simulates the Enigma 1 machine with the UKW-B reflector. For more Info about the Enigma click         .",
     fill="#000000",
     font=("InriaSans Regular", 15 * -1),
 )
 canvas.create_text(
-    697.0,
+    721.0,
     803.0,
     anchor="nw",
     text="here",
