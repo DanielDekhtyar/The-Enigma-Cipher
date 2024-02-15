@@ -77,10 +77,15 @@ _That's it!_
  
 Like magic, the message is now encrypted and you can send secret messages to your friend.  
 Just make sure that they have all the settings set the same way you do, otherwise, it won't work.  
+
+- ### Decryption
+To decrypt a message you have to make sure that both the sender and the receiver have the same settings.  
+Then just put the encrypted message into the `Input Text` field and click `Encipher Text`.  
+You should see the decrypted message right away!  
   
 Please notice that only English characters will be encrypted. Any punctuation marks, numbers and whitespace will be left as it is.  
 
-#### _Enjoy!_
+### _Enjoy!_
 
 <br></br>
 # Credits
