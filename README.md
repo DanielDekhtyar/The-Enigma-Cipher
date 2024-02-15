@@ -25,7 +25,7 @@
 ## Configuring the Enigma machine : 
  Here is an example of the `daily settings sheet`. It shows the configuration for the enigma for all the days of the month.  
  Every month a new settings sheet was given to all the Enigma operators in the German Military so no configuration was ever used twice.  
- The settings sheet is how the Germans knew how to set up their Enigmas so all the Enigma machines were with the same settings on any given day.  
+ The settings sheet is how the operators knew how to set up their Enigmas so all the Enigma machines were with the same settings on any given day.  
  You can find more of those [here](https://www.google.com/search?q=enigma+settings+code+sheet&newwindow=1&sca_esv=eecfb1e247dfd8d4&udm=2&biw=1536&bih=722&sxsrf=ACQVn0_StacF1nd-XovoF-shNo1GkccIqQ%3A1708018546816&ei=ckvOZbueMcuH9u8P46mloAo&ved=0ahUKEwi7n4L28K2EAxXLg_0HHeNUCaQQ4dUDCBA&uact=5&oq=enigma+settings+code+sheet&gs_lp=Egxnd3Mtd2l6LXNlcnAiGmVuaWdtYSBzZXR0aW5ncyBjb2RlIHNoZWV0SOQMULsCWO0IcAF4AJABAJgB5QGgAcgHqgEFMC40LjG4AQPIAQD4AQHCAgQQIxgn4gMEGAEgQYgGAQ&sclient=gws-wiz-serp).
 
 <p align="left">
