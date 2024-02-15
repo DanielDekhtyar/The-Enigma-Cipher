@@ -52,7 +52,10 @@ We will focus on just one day. Let's say the `14th of October 1944 (14. Oktober 
     - The `initial position of the rotors (Grundstellung)` was decided by the transmitting operator and was different for every single message. No special rules here.  
     Let's say that we decide on the starting position `17 23 08`.  
     If so, we can set it in the `Position` center column in the app like this:  
-    ![Initial position app](<assets/README/Initial position app.png>)  
+    ![Initial position app](<assets/README/Initial position app.png>) 
+
+    Please notice that this app uses the UKW-B reflector.
+    This setting is predetermined and you cannot change it.
 
 - ### Set up the plugboard
 In the middle of the settings sheet, you can find `Plugboard (Steckerverbindungen)` settings.  
