@@ -1,5 +1,5 @@
 # The Enigma Cipher
----
+
 ### _The Enigma Cipher project recreates the historic Enigma I machine, the most popular version used during World War II, using Python to encode and decode messages. It employs the principles of the Enigma encryption system, incorporating rotors, reflectors, and the plugboard._  
 ### _The inspiration for this project came to me after watching the movie [The Imitation Game (2014)](https://www.youtube.com/watch?v=nuPZUUED5uk), which shows Alan Truing with his team trying to break the Enigma cipher at Bletchley Park._  
 
@@ -16,8 +16,9 @@
 </p>
 
 <br></br>
+
 # How to use the machine? I'm glad you asked!
----
+
 ## Installation :  
 - To use the app you can download the `The Enigma Cipher.exe` file and run it.
 - To download the exe file click [here](https://github.com/DanielDekhtyar/The-Enigma-Cipher/raw/main/The%20Enigma%20Cipher.exe).
