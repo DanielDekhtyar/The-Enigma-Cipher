@@ -38,30 +38,30 @@ We will focus on just one day. Let's say the `14th of October 1944 (14. Oktober 
     - The Enigma machine comes with a set of 5 rotors with roman letters on them. `I II III IV V`.  
     We can find todays rotor selection in the `Rotors position (Walzenlage)` column.  
     Per the daily setting, the rotors that we will use today are `II I V`.  
-    ![Rotor settings](<Rotor settings.png>)  
+    ![Rotor settings](<assets/README/Rotor settings.png>)  
     We can set it in the `Number` left-most column in the app like this:  
-    ![Rotors settings in the app](<Rotor settings app.png>)  
+    ![Rotors settings in the app](<assets/README/Rotor settings app.png>)  
   
     - Next, we should set the ring shift from the `Ring positioning (Ringstlung)` column.  
     This setting shifts the letters by a predetermined number of letters. In other words with is a Caesar cypher.  
     Per the daily settings, the rotor shift is `23 05 24`.  
-    ![Rotor shift settings](<Shift setting.png>)  
+    ![Rotor shift settings](<assets/README/Shift setting.png>)  
     We can set it in the `Shift` right-most column in the app like this:  
-    ![Rotor shift settings app](<Shift settings app.png>)  
+    ![Rotor shift settings app](<assets/README/Shift settings app.png>)  
   
     - The `initial position of the rotors (Grundstellung)` was decided by the transmitting operator and was different for every single message. No special rules here.  
     Let's say that we decide on the starting position `17 23 08`.  
     If so, we can set it in the `Position` center column in the app like this:  
-    ![Initial position app](<Initial position app.png>)  
+    ![Initial position app](<assets/README/Initial position app.png>)  
 
 - ### Set up the plugboard
 In the middle of the settings sheet, you can find `Plugboard (Steckerverbindungen)` settings.  
 Those are letter pairs. Each of the letters will be substituted for its pair and vice versa.
 In the German Enigma, only 10 letter pairs were usually used but in the app, you can use as many as 13 pairs.
 The plugboard settings for today are as follows:  
-![Plugboard settings](<Plugboard settings.png>)  
+![Plugboard settings](<assets/README/Plugboard settings.png>)  
 In the app, the plugboard setup will look something like this:  
-![Plugboard settings app](<Plugboard settings app.png>)  
+![Plugboard settings app](<assets/README/Plugboard settings app.png>)  
 You may notice that some of the plugs are empty. A letter that has no letter pair, would not change.  
 The order of the letters has no difference as long as every letter is by its respective pair letter.  
 
@@ -70,16 +70,16 @@ The order of the letters has no difference as long as every letter is by its res
 Now after we set up our machine for today's settings we can finally get to the fun part. Encrypting the messages.  
 Just input your message in the `Input Text` field and click `Encipher Text`!  
 
-That's it! 
+_That's it!_  
  
 Like magic, the message is now encrypted and you can send secret messages to your friend.  
 Just make sure that they have all the settings set the same way you do, otherwise, it won't work.  
   
 Please notice that only English characters will be encrypted. Any punctuation marks, numbers and whitespace will be left as it is.  
 
-Enjoy!
+#### _Enjoy!_
 
-
+<br></br>
 # Credits
 I want to mention and say thanks to all the resources on the internet that helped me understand how the Enigma machine works.  
 A great video I would recommend is by Jared Owen - How did the Enigma Machine work?:  
