@@ -36,14 +36,14 @@ We will focus on just one day. Let's say the `14th of October 1944 (14. Oktober 
 
 - ### Set up the rotors
     - The Enigma machine comes with a set of 5 rotors with roman letters on them. `I II III IV V`.  
-    We can find todays rotor selection in the `Rotors position (Walzenlage)` column.  
+    We can find today's rotor selection in the `Rotors position (Walzenlage)` column.  
     Per the daily setting, the rotors that we will use today are `II I V`.  
     ![Rotor settings](<assets/README/Rotor settings.png>)  
     We can set it in the `Number` left-most column in the app like this:  
     ![Rotors settings in the app](<assets/README/Rotor settings app.png>)  
   
     - Next, we should set the ring shift from the `Ring positioning (Ringstlung)` column.  
-    This setting shifts the letters by a predetermined number of letters. In other words with is a Caesar cypher.  
+    This setting shifts the letters by a predetermined number of letters. In other words, it's a Caesar cipher.  
     Per the daily settings, the rotor shift is `23 05 24`.  
     ![Rotor shift settings](<assets/README/Shift setting.png>)  
     We can set it in the `Shift` right-most column in the app like this:  
