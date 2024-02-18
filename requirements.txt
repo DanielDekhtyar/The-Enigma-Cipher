@@ -1,0 +1,2 @@
+# No need of any external packages
+# Uses only Tkinter which is built-in into Python
