@@ -29,10 +29,10 @@ def pass_through_plugboard(letter: int, plugboard, reversed_plugboard) -> chr:
 
     if letter in plugboard:
         return plugboard[letter]
-    
+
     if letter in reversed_plugboard:
         return reversed_plugboard[letter]
-    
+
     else:
         return letter
 

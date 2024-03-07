@@ -16,6 +16,8 @@ ASSETS_PATH = path_to_assets_folder
 
 
 """Return the absolute path to a file or directory relative to the assets folder."""
+
+
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
@@ -215,7 +217,9 @@ clear_input_button = Button(
     command=lambda: gui_event_handlers.clear_textbox(input_text),
     relief="flat",
 )
-clear_input_button.place(x=330.0, y=101.0, width=104.13290405273438, height=39.86198043823242)
+clear_input_button.place(
+    x=330.0, y=101.0, width=104.13290405273438, height=39.86198043823242
+)
 
 # Clear output
 clear_output_img = PhotoImage(file=relative_to_assets("Clear button.png"))
@@ -226,7 +230,9 @@ clear_output_button = Button(
     command=lambda: gui_event_handlers.clear_textbox(output_text),
     relief="flat",
 )
-clear_output_button.place(x=330.0, y=449.0, width=104.13290405273438, height=39.86198043823242)
+clear_output_button.place(
+    x=330.0, y=449.0, width=104.13290405273438, height=39.86198043823242
+)
 
 # Encryption waring text
 canvas.create_text(
