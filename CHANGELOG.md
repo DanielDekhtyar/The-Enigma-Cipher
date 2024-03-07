@@ -2,11 +2,27 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 1.0.0
+> ### Last Version : 1.0.1
 >
-> ### Last Update : 05-02-2024
+> ### Last Update : 07-03-2024
 >
 > _Date format DD-MM-YYYY_
+
+
+### 🗓️ _Version 1.0.1 - 07-03-2024 ([commit ee718e0](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/ee718e0))_
+
+---
+
+#### 🚀 Added
+- In `is_valid_settings()` a section of code was added to check if every letter in the plugboard has a pair letter.  
+This addresses a bug when a letter can have no pair.
+
+
+### 🔥 Enhancements
+- In `ciphering_algorithm.py`, `result_text: str` was renamed to `enciphered_text: str`.
+- In `gui_event_handlers.py`, `display_enciphered_text()` was renamed to `display_text()` and changed to take a new parameter `color: str` (color of the text),  
+so now it can be universally used to print text into any textbox, regardless if it is an error message (red), regular text (black) or any other text.
+- `is_valid_settings()` was changed to take advantage of the enhanced `display_text()` function.
 
 
 ### 🗓️ _Version 1.0.0 - 05-02-2024 ([commit 578ce1d](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/578ce1d))_
