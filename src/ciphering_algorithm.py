@@ -32,7 +32,7 @@ def encipher(
     )
 
     # Stores the text after it went through the Enigma machine
-    result_text = ""
+    enciphered_text = ""
 
     # Loop through each character in the string
     for char in text:
@@ -47,12 +47,12 @@ def encipher(
 
             # Convert the number value back to a character and append to the result string
             char_back = chr(enciphered_letter + ord("A"))
-            result_text += char_back
+            enciphered_text += char_back
         else:
             # If not a letter then just append the char as it is
-            result_text += char
+            enciphered_text += char
 
-    return result_text
+    return enciphered_text
 
 
 def enigma_machine(
@@ -126,7 +126,6 @@ def enigma_machine(
         0,
         19,
     ]
-
 
     """All the steps that a letter goes through in the Enigma machine"""
 
