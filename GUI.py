@@ -16,8 +16,6 @@ ASSETS_PATH = path_to_assets_folder
 
 
 """Return the absolute path to a file or directory relative to the assets folder."""
-
-
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
@@ -288,11 +286,32 @@ canvas.create_text(
     font=("InriaSans Regular", 15 * -1, "underline"),
     tags="enigma_link",
 )
+canvas.create_text(
+    820,
+    120,
+    anchor="nw",
+    text="How to use it?",
+    fill="blue",
+    font=("InriaSans Regular", 15 * -1, "underline"),
+    tags="tutorial_link",
+)
+
+canvas.create_text(
+    1200,
+    803,
+    anchor="nw",
+    text="v1.0.2",
+    fill="blue",
+    font=("InriaSans Regular", 15 * -1, "underline"),
+    tags="changelog_link",
+)
 
 # Bind the click event to the open_link function
 canvas.tag_bind("linkedin_link", "<Button-1>", gui_event_handlers.open_linkedin_link)
 canvas.tag_bind("github_link", "<Button-1>", gui_event_handlers.open_github_link)
 canvas.tag_bind("enigma_link", "<Button-1>", gui_event_handlers.open_enigma_link)
+canvas.tag_bind("tutorial_link", "<Button-1>", gui_event_handlers.tutorial_link)
+canvas.tag_bind("changelog_link", "<Button-1>", gui_event_handlers.changelog_link)
 
 
 """Add arrows in plugboard"""

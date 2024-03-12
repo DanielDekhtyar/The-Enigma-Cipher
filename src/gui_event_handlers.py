@@ -349,3 +349,11 @@ def open_linkedin_link(event):
 
 def open_github_link(event):
     webbrowser.open_new_tab("https://github.com/DanielDekhtyar")
+
+
+def tutorial_link(event):
+    webbrowser.open_new_tab("https://github.com/DanielDekhtyar/The-Enigma-Cipher/blob/main/README.md")
+
+
+def changelog_link(event):
+    webbrowser.open_new_tab("https://github.com/DanielDekhtyar/The-Enigma-Cipher/blob/main/CHANGELOG.md")
