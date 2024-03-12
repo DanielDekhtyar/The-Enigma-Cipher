@@ -2,11 +2,20 @@
 
 ## 📝 Changelog:
 
-> ### Last Version : 1.0.1
+> ### Last Version : 1.0.2
 >
-> ### Last Update : 07-03-2024
+> ### Last Update : 12-03-2024
 >
 > _Date format DD-MM-YYYY_
+
+
+### 🗓️ _Version 1.0.2 - 12-03-2024 ([commit 12634c1](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/12634c1))_
+
+--
+
+#### 🚀 Added
+- Added a link to the GitHub `README.md` file to explain how to configure the enigma.
+- Added a text with the version of the app at the bottom right side and when clicked it opens `CHANGELOG.md` on GitHub.
 
 
 ### 🗓️ _Version 1.0.1 - 07-03-2024 ([commit ee718e0](https://github.com/DanielDekhtyar/The-Enigma-Cipher/commit/ee718e0))_
