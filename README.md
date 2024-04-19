@@ -23,6 +23,10 @@
 - To use the app you can download the `The Enigma Cipher.exe` file and run it.
 - To download the exe file click [here](https://github.com/DanielDekhtyar/The-Enigma-Cipher/raw/main/The%20Enigma%20Cipher.exe).
 
+### After opening the app you should see something similar to this:
+<img width="942" alt="The_Enigma_Cipher_lbo58utyUh" src="https://github.com/DanielDekhtyar/The-Enigma-Cipher/assets/44679647/a8569f6a-aa87-4cb6-8197-b0247ed96066">
+
+
 ## Configuring the Enigma machine : 
  Here is an example of the `daily settings sheet`. It shows the configuration for the enigma for all the days of the month.  
  Every month a new settings sheet was given to all the Enigma operators in the German Military so no configuration was ever used twice.  
